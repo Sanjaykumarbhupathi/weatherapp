@@ -1,4 +1,4 @@
-const bcrypt = require('bcryptjs'); // Update the import
+const bcrypt = require('bcryptjs'); 
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
@@ -42,7 +42,6 @@ exports.login = async (req, res) => {
 
         const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
 
-        // Return userId, username, and token in the response
         res.json({
             userId: user._id,
             username: user.username,
@@ -106,9 +105,9 @@ exports.toggleFavorite = async (req, res) => {
     const index = user.favorites.indexOf(cityName);
     
     if (index > -1) {
-      user.favorites.splice(index, 1); // Remove from favorites
+      user.favorites.splice(index, 1); 
     } else {
-      user.favorites.push(cityName); // Add to favorites
+      user.favorites.push(cityName); 
     }
 
     await user.save();
